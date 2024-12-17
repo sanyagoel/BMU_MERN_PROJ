@@ -4,18 +4,19 @@ const createTask = async (req, res, next) => {
   try {
     const { title, description } = req.body;
 
-    const newTask = {
+    const newTask = new Task({
       title,
       description,
       isCompleted: false,
       createdAt: Date.now(),
-    };
+      updatedAt : Date.now()
+    });
 
     const result = await newTask.save();
     if (!result) {
-      console.log("Something went wrong...");
+      res.send("Something went wrong...");
     } else {
-      console.log("Task saved succesfully");
+      res.send("Task saved succesfully");
     }
   } catch (err) {
     console.log(err);
@@ -25,7 +26,7 @@ const createTask = async (req, res, next) => {
 const viewTasks = async (req, res, next) => {
   try {
     const tasks = await Task.find({});
-    console.log(tasks);
+    res.send(tasks);
   } catch (err) {
     console.log(err);
   }
@@ -35,17 +36,18 @@ const updateTasks = async (req, res, next) => {
   try {
     const { title, description } = req.body;
     if (title && description) {
-      const result = await Task.findOneAndUpdate({
+      const result = await Task.findOneAndUpdate({_id : req.params.id},{
         title: title,
         description: description,
+        updatedAt : Date.now()
       });
       if (result) {
-        console.log("updated succesfully");
+        res.send("updated succesfully");
       } else {
-        console.log("something went wrong");
+        res.send("something went wrong");
       }
     } else {
-      console.log("Enter the task and description properly :/ ");
+        res.send("Enter the task and description properly :/ ");
     }
   } catch (err) {
     console.log(err);
@@ -54,16 +56,16 @@ const updateTasks = async (req, res, next) => {
 
 const deleteTasks = async (req, res, next) => {
   try {
-    const { taskID } = req.body;
+    const taskID = req.params.id;
     const task = await Task.findByIdAndDelete({ _id: taskID });
     if (task) {
-      console.log("Task deleted succesfully :)");
+        res.send("Task deleted succesfully :)");
     } else {
-      console.log("Something went wrong...");
+        res.send("Something went wrong...");
     }
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = { createTask };
+module.exports = { createTask , viewTasks, updateTasks, deleteTasks};

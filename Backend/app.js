@@ -1,13 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const routes = require('./Routers/taskRoutes');
+const {router} = require('./Routers/taskRoutes');
 dotenv.config();
 
 const app = new express();
 
-
-app.use('/',routes);
+app.use(express.json());
+app.use('/tasks',router);
 
 app.listen(process.env.PORT,()=>{
     console.log('Listening');
