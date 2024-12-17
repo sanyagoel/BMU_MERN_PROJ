@@ -3,8 +3,12 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const {router} = require('./Routers/taskRoutes');
 dotenv.config();
-
 const app = new express();
+
+const cors = require('cors');
+app.use(cors());
+
+
 
 app.use(express.json());
 app.use('/tasks',router);

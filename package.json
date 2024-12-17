@@ -1,0 +1,12 @@
+{
+  "name": "bmu-mern-proj",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "cd Backend && npm start",
+    "start-frontend": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
