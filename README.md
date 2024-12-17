@@ -18,13 +18,15 @@ Before starting, ensure you have the following installed on your machine:
 2. Run the following command to clone the repository:
 
 ```bash
-git clone https://github.com/your-username/task-management-app.git
+git clone https://github.com/sanyagoel/BMU_MERN_PROJ.git
+
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd task-management-app
+cd BMU_MERN_PROJ
+
 ```
 
 ## Installing Dependencies
@@ -88,10 +90,10 @@ This will start the frontend server on http://localhost:5173.
 **Backend:**
 
 * Ensure your MongoDB instance is running locally or you're connected to MongoDB Atlas.
-* If using MongoDB locally, make sure the `MONGO_URI` environment variable is correctly set. You can create a `.env` file in the backend directory with the following:
+* If using MongoDB locally, make sure the `MONGOOSE_PATH` environment variable is correctly set. You can create a `.env` file in the backend directory with the following:
 
 ```
-MONGO_URI=mongodb://localhost:27017/taskmanagement
+MONGOOSE_PATH = "mongodb://localhost:27017/mern_proj_final"
 ```
 
 **Frontend:**
