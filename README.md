@@ -8,7 +8,7 @@ A task management web application with full CRUD functionality. It allows users 
 
 Before starting, ensure you have the following installed on your machine:
 
-1. **Node.js** (v16 or later)
+1. **Node.js**
 2. **MongoDB** (for the backend)
 ---
 
@@ -101,3 +101,36 @@ MONGO_URI=mongodb://localhost:27017/taskmanagement
 ## Usage
 
 Open your browser and go to http://localhost:5173. You should see the task management app. You can create, edit, and delete tasks.
+
+## Sample Outputs
+
+![image](https://github.com/user-attachments/assets/d05d5ff1-b15a-4717-93bd-7120ee4369a6)
+
+Edit any of your particular task : 
+
+![image](https://github.com/user-attachments/assets/9426bbbc-72f4-4b20-9c88-b7e5e47becbe)
+
+![image](https://github.com/user-attachments/assets/4478fcd8-0991-4294-976b-2131aea85b97)
+
+See the changes in your mongoDB database : 
+
+![image](https://github.com/user-attachments/assets/1f55f998-fe48-4ca2-8bae-1f0abc341112)
+
+Delete any of your tasks : 
+
+![image](https://github.com/user-attachments/assets/e2829dce-f56b-449a-a869-507c3168afe7)
+
+Create new tasks : 
+
+![image](https://github.com/user-attachments/assets/51294fac-7710-45e7-9311-50d6d666a300)
+
+![image](https://github.com/user-attachments/assets/0560034d-320c-4623-b0a2-706deaad0559)
+
+![image](https://github.com/user-attachments/assets/2b646c67-19ea-4640-9b9a-e16934cbed4b)
+
+
+
+
+
+
+
