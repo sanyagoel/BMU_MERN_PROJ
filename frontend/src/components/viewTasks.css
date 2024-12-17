@@ -5,18 +5,17 @@
 
 .tasks-list {
     width: 40%;
-    background-color: black;
+    background-color: #5c7756;
     color: white;
     padding: 20px;
     overflow-y: auto;
 }
 
 .task-button {
-    background-color: black;
+    background-color: #ffb82b;
     color: white;
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid white;
     cursor: pointer;
     width: 100%;
     text-align: left;
@@ -31,7 +30,7 @@
 .task-details-container {
     width: 60%;
     padding: 20px;
-    background-color: #f8e0f1;
+    background-color: #ffdda4;
     overflow-y: auto;
     display: flex;
     justify-content: center;
@@ -40,7 +39,7 @@
 }
 
 .create-task-button {
-    background-color: #4CAF50;
+    background-color: #dd8c5d;
     color: white;
     padding: 10px;
     margin-bottom: 20px;

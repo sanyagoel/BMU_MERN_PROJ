@@ -7,6 +7,7 @@ function App() {
 
   return (
     <>
+        <h1>Task Manager :3 </h1>
        <ViewTasks></ViewTasks>
     </>
   )
