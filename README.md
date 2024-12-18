@@ -108,29 +108,45 @@ Open your browser and go to http://localhost:5173. You should see the task manag
 
 ## Sample Outputs
 
-![image](https://github.com/user-attachments/assets/d05d5ff1-b15a-4717-93bd-7120ee4369a6)
+![image](https://github.com/user-attachments/assets/9e98c125-8133-43b3-9d02-3671e62cb57c)
+
 
 Edit any of your particular task : 
 
-![image](https://github.com/user-attachments/assets/9426bbbc-72f4-4b20-9c88-b7e5e47becbe)
+![image](https://github.com/user-attachments/assets/c78c3168-7de8-4290-b200-00d656731224)
 
-![image](https://github.com/user-attachments/assets/4478fcd8-0991-4294-976b-2131aea85b97)
+![image](https://github.com/user-attachments/assets/54788b1e-9fd7-4551-81ed-bb62cd2319d7)
+
 
 See the changes in your mongoDB database : 
 
-![image](https://github.com/user-attachments/assets/1f55f998-fe48-4ca2-8bae-1f0abc341112)
+![image](https://github.com/user-attachments/assets/126eb9df-5bb4-4a2a-b389-a5aa563b1a7f)
+
 
 Delete any of your tasks : 
 
-![image](https://github.com/user-attachments/assets/e2829dce-f56b-449a-a869-507c3168afe7)
+![image](https://github.com/user-attachments/assets/d839977f-b9ae-40a8-a67b-c9d5fadf7dea)
+
 
 Create new tasks : 
 
-![image](https://github.com/user-attachments/assets/51294fac-7710-45e7-9311-50d6d666a300)
+![image](https://github.com/user-attachments/assets/27102035-5807-460d-84ca-17832f33d061)
 
 ![image](https://github.com/user-attachments/assets/0560034d-320c-4623-b0a2-706deaad0559)
 
 ![image](https://github.com/user-attachments/assets/2b646c67-19ea-4640-9b9a-e16934cbed4b)
+
+
+**Filter Tasks**
+
+See all the completed tasks : 
+
+![image](https://github.com/user-attachments/assets/d6bd8644-ebcd-47e8-a5e5-18026f0b43a1)
+
+See all the incomplete tasks : 
+
+![image](https://github.com/user-attachments/assets/a5edf970-7fde-499c-998f-886a428b1188)
+
 
 
 
