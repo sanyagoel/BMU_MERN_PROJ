@@ -8,14 +8,21 @@ const ViewTasks = () => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [showCreateTask, setShowCreateTask] = useState(false);
 
-  const fetchTasks = async () => {
-    const response = await fetch("http://localhost:3000/tasks");
-    const data = await response.json();
-    setTasks(data);
+  const fetchTasks = async (filter = "") => {
+    try {
+      const url = filter
+        ? `http://localhost:3000/tasks/filter/${filter}`
+        : "http://localhost:3000/tasks"; 
+      const response = await fetch(url);
+      const data = await response.json();
+      setTasks(data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
   };
 
   useEffect(() => {
-    fetchTasks();
+    fetchTasks(); // fetch all tasks initially
   }, []);
 
   const handleTaskClick = (task) => {
@@ -35,7 +42,7 @@ const ViewTasks = () => {
 
       if (response.ok) {
         await fetchTasks();
-        setSelectedTask(updatedTask);
+        setSelectedTask({ ...selectedTask, ...updatedTask });
       } else {
         console.error("Failed to edit task");
       }
@@ -56,9 +63,48 @@ const ViewTasks = () => {
     }
   };
 
+  const handleCompleteTask = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/tasks/complete/${id}`, {
+        method: "PUT",
+      });
+
+      if (response.ok) {
+        const updatedTask = await response.json();
+
+        // update task list state
+        setTasks((prevTasks) =>
+          prevTasks.map((task) =>
+            task._id === updatedTask._id ? updatedTask : task
+          )
+        );
+
+        if (selectedTask && selectedTask._id === updatedTask._id) {
+          setSelectedTask(updatedTask);
+        }
+      } else {
+        console.error("Failed to mark task as complete");
+      }
+    } catch (error) {
+      console.error("Error completing task:", error);
+    }
+  };
+
   const handleCreateTask = (newTask) => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
     setShowCreateTask(false);
+  };
+
+  const handleFilterCompleted = () => {
+    fetchTasks("completed"); 
+  };
+
+  const handleFilterIncomplete = () => {
+    fetchTasks("incomplete"); 
+  };
+
+  const handleFilterAll = () => {
+    fetchTasks(); 
   };
 
   return (
@@ -70,11 +116,16 @@ const ViewTasks = () => {
         >
           Create Task
         </button>
+        <div className="task-filter-buttons">
+          <button onClick={handleFilterCompleted}>Completed</button>
+          <button onClick={handleFilterIncomplete}>Incomplete</button>
+          <button onClick={handleFilterAll}>All</button>
+        </div>
         <ul>
           {tasks.map((task) => (
             <li key={task._id}>
               <button
-                className="task-button"
+                className={`task-button ${task.isCompleted ? "completed" : ""}`}
                 onClick={() => handleTaskClick(task)}
               >
                 {task.title}
@@ -93,6 +144,7 @@ const ViewTasks = () => {
               task={selectedTask}
               onEdit={handleEditTask}
               onDelete={handleDeleteTask}
+              onComplete={handleCompleteTask} // pass the onComplete handler
             />
           )
         )}

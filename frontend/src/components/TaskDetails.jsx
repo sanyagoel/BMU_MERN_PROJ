@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./TaskDetails.css";
 
-const TaskDetails = ({ task, onEdit, onDelete }) => {
+const TaskDetails = ({ task, onEdit, onDelete, onComplete }) => {
   if (!task) return null;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -31,8 +31,18 @@ const TaskDetails = ({ task, onEdit, onDelete }) => {
     }
   };
 
+  const handleComplete = async () => {
+    try {
+      await onComplete(task._id);
+    } catch (error) {
+      console.error("Error completing task:", error);
+    }
+  };
+
   return (
-    <div className="task-details-box">
+    <div
+      className={`task-details-box ${task.isCompleted ? "completed-task" : ""}`}
+    >
       {isEditing ? (
         <form onSubmit={handleEditSubmit}>
           <div>
@@ -60,6 +70,9 @@ const TaskDetails = ({ task, onEdit, onDelete }) => {
           <p>{task.description}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
           <button onClick={handleDelete}>Delete</button>
+          {!task.isCompleted && (
+            <button onClick={handleComplete}>Mark as Completed</button>
+          )}
         </>
       )}
     </div>

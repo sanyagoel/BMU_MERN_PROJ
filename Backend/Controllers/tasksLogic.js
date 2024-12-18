@@ -68,4 +68,43 @@ const deleteTasks = async (req, res, next) => {
   }
 };
 
-module.exports = { createTask , viewTasks, updateTasks, deleteTasks};
+
+const completeTask = async(req,res,next)=>{
+  try{
+
+    const id = req.params.id;
+    const result = await Task.findOneAndUpdate({_id : id}, {isCompleted : true}, { new: true });
+    if(result){
+      res.json(result);
+
+    }else{
+      res.send('Something went wrong .... :(');
+    }
+
+  }catch(err){
+    console.log(err);
+  }
+}
+
+const getCompletedTasks = async(req,res,next)=>{
+  try{
+
+    const tasks = await Task.find({isCompleted : true});
+    res.json(tasks);
+
+  }catch(err){
+    console.log(err);
+  }
+}
+
+const getIncompleteTasks = async(req,res,next)=>{
+  try{
+
+    const tasks = await Task.find({isCompleted : false});
+    res.json(tasks);
+  }catch(err){
+    console.log(err);
+  }
+}
+
+module.exports = { createTask , viewTasks, updateTasks, deleteTasks, completeTask, getCompletedTasks, getIncompleteTasks};
